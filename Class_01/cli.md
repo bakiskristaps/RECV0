@@ -9,6 +9,8 @@
   - c.. - izkļū (vienu soli aptakaļ) no direktorija
   - ~ - mājas apgabals
   - man - ja shell ļauj, iespējams iegūt komandas aprakstu
+  - history - parāda komandu vēsturi
+  - mnt - mount point
  
  # **hot keys**
  - ctrl + l - notīra komand logu
