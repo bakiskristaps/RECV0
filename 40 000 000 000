@@ -1,0 +1,16 @@
+#include <stdio.h> /* Izmanto ievad/izvad operāciju bibliotēku */
+int main() /* Galvena funkcija */
+{
+    long int num1; /* Pirmais skaitlis, long int datu tips lauj glabat veselus skaitlus diapazona no [−2147483647, +2147483647] */
+    long int num2; /* Otrais skaitlis, long int datu tips lauj glabat veselus skaitlus diapazona no [−2147483647, +2147483647] */
+
+    printf("Ludzu, ievadiet pirmo skaitli: ");
+    scanf("%ld", &num1); /* Gaida pirma skaitla ievadu no lietotaja */
+
+    printf("Ludzu, ievadiet otro skaitli: ");
+    scanf("%ld", &num2); /* Gaida otra skaitla ievadu no lietotaja */
+
+    printf("\nJusu skaitlu reizinajums ir: %ld\n", num1*num2); /* izdruka uz ekrana reizinajumu un jaunu rindu (\n) */
+    
+    return 0;  /* Galvena funkcija beidzas veiksmigi un atgriez nulli */
+}
