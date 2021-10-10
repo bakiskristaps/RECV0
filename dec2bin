@@ -1,0 +1,26 @@
+include <stdio.h>
+
+int main() /* Galvena funkcija */
+{
+    unsigned char c; /* Mainigais, kurs satures ciparu [0-9], char tips nevar saturet divciparu vai liela$
+
+    printf("Ludzu, ievadiet ciparu no 0 lidz 9: ");
+    scanf("%c", &c); /* Gaida cipara ievadu no lietotaja */
+
+/* Tekstualaas (ASCII) vertibas reprezentacija binara forma */
+    printf("Jusu ievaditajam ciparam ASCII tabula atbilst sekojosa binara reprezentacija: ");
+
+    for( int i = 7; i >= 0; i-- ) { /* Iet cauri visiem 8 bitiem ar ciklu */
+        unsigned char ch;
+        ch = c >> i;
+        if ((ch & 1) == 1)
+        {
+            printf("1");
+        }
+        else
+        {
+            printf("0");
+        }
+    }
+
+    printf("\n");
