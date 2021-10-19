@@ -1,8 +1,8 @@
-include <stdio.h>
+#include <stdio.h>
 
 int main() /* Galvena funkcija */
 {
-    unsigned char c; /* Mainigais, kurs satures ciparu [0-9], char tips nevar saturet divciparu vai liela$
+    unsigned char c; /* Mainigais, kurs satures ciparu [0-9], char tips nevar saturet divciparu vai l$
 
     printf("Ludzu, ievadiet ciparu no 0 lidz 9: ");
     scanf("%c", &c); /* Gaida cipara ievadu no lietotaja */
@@ -24,3 +24,27 @@ int main() /* Galvena funkcija */
     }
 
     printf("\n");
+    
+/* Skaitliskas vertibas reprezentacija binara forma */
+
+    printf("Jusu ievaditajam ciparam skaitliski atbilst sekojosa binara reprezentacija: ");
+
+    for( int i = 7; i >= 0; i-- ) { /* Iet cauri visiem 8 bitiem ar ciklu */
+        unsigned char ch;
+        ch = (c - '0') >> i;
+        if ((ch & 1) == 1)
+        {
+            printf("1");
+        }
+        else
+        {
+            printf("0");
+        }
+    }
+
+    printf("\n");
+    
+    return 0;  /* Galvena funkcija beidzas veiksmigi un atgriez nulli */
+}
+
+
