@@ -1,0 +1,133 @@
+/*
+PU5/PT5: for + factorial
+LV
+Uzrakstiet kodu dialogam ar lietotāju.
+Lietotājam ir jāievada viens decimāls skaitlis, lietotājam ir jāizvēlas datu tips - char, int vai long long.
+Aprēķiniet un paziņojiet lietotājam viņa ievadīta skaitļa faktoriāla vērtība vai paziņojiet,
+ka ievadītam skaitlim ar izvēlētu datu tipu pareizi aprēķināt faktoriālu nav iespējams.
+Aprēķinam izmantojiet for ciklu. Aprēķins ir jāpārtrauc uzreiz, tik ko tas kļūst nepareizs (lai nav jātērē laiks).
+Nedrīkst izmantot datu tipu robežu konstantes, nedrīkst salīdzināt faktoriāla vērtību ar nulli,
+nedrīkst pārbaudīt faktoriāla vērtības zīmi, nedrīkst izmantot datu tipu savādāku nekā lietotājs ir izvēlējies.
+Risinājuma kodu augšupielādējiet GitHub vietnē Jūsu RTR105 repozitorijā, šeit iekopējiet risinājuma koda adresi.
+*/
+#include <stdio.h>
+
+int main()
+{
+    int datutips;
+
+    printf("Ludzu izvelieties datu tipu:\n0 - int\n1 - long long\n2 - char\n");
+    scanf(" %d", &datutips);
+
+    char c;
+    long long ll;
+    int x, i, j;
+
+    int fakt_int = 1;
+    int fakt_iepr_int = fakt_int;
+
+    long long fakt_ll = 1;
+    long long fakt_iepr_ll = fakt_iepr_ll;
+
+    int fakt_char = 1;
+    int fakt_iepr_char = fakt_char;
+
+    int fail = 0;
+
+    switch (datutips)
+    {
+    case 0: // Izvelets int
+        printf("Ludzu ievadiet skaitli:\n");
+        scanf(" %d", &x);
+        printf("Jus ievadijat: %d\n", x);
+        for(i=1; i<=x; i++) // Kamer iterators nav sasniedzis ievadito skaitli
+        {
+            fakt_iepr_int = fakt_int; // Saglaba iepriekseja rezultata summu cita mainiga
+            fakt_int = fakt_int * i; // Izdara reizinajumu ar tekoso skaitli
+            if(fakt_int / i == fakt_iepr_int) // Parbauda izdarot preteju darbibu iegust tadu pasu vertibu kada bija pirms tam
+            {
+               continue; // Turpina uz nakamo iteraciju
+            } 
+            else
+            {
+               fail = 1; // Zino par kludu un beidz darbu
+               break;
+            }
+        }
+        if (fail == 1) // Ja bija kluda
+        {
+            printf("Skaitlim ar izveleto datu tipu pareizi faktoriala vertibu nav iespejams izrekinat!\n");
+
+        }
+        else // Ja nebija kludu
+        {
+            printf("Faktoriala vertiba ir: %d\n", fakt_int);
+        }
+        break;
+
+    case 1: // Izvelets long long 
+        printf("Ludzu ievadiet skaitli:\n");
+        scanf(" %lld", &ll);
+        printf("Jus ievadijat: %lld\n", ll);
+        for (i=1; i<=ll; i++)
+        {
+            fakt_iepr_ll = fakt_ll;
+            fakt_ll = fakt_ll * i;
+            if(fakt_ll / i == fakt_iepr_ll)
+            {
+                continue;
+            } 
+            else
+            {
+               fail = 1;
+               break;
+            }
+        }
+        if (fail == 1)
+        {
+            printf("Skaitlim ar izveleto datu tipu pareizi faktoriala vertibu nav iespejams izrekinat!\n");
+
+        }
+        else 
+        {
+            printf("Faktoriala vertiba ir: %lld\n", fakt_ll);
+        }
+        break;
+
+    case 2: // Izvelets char
+        printf("Ludzu ievadiet skaitli:\n");
+        scanf(" %c", &c);
+        printf("Jus ievadijat: %c\n", c);
+        j = c - '0'; // Ievaditajam skaitlim atnem '0' jeb 48 (ASCII tabula)
+        for (i=1; i<=j; i++)
+        {
+            fakt_iepr_char = fakt_char;
+            fakt_char = fakt_char * i;
+            if(fakt_char <= 9) // Kaa char simbolus iespejams attelot tikai ciparus (skaitlus stingri zem 10)
+            {
+                continue;
+            }
+            else
+            {
+                fail = 1;
+                break;
+            }
+        }
+        if (fail == 1)
+        {
+            printf("Skaitlim ar izveleto datu tipu pareizi faktoriala vertibu nav iespejams izrekinat!\n");        
+        }
+        else
+        {
+            printf("Faktoriala vertiba ir: %c\n", fakt_char + '0');        
+            // Vienigie derigie rezultati ir 1, 1, 2, 6 (ja ievada 0, 1, 2, 3), jo parejie parsniedz 9     
+        }
+        break;         
+
+    default: // Ja nav noradits pareizs datu tipa ievades kods
+        printf("Nav izvelets neviens no pieejamiem datu tipiem! Beidzam darbu ar kludu!\n");
+        break;         
+    }
+
+    return 0;
+}
