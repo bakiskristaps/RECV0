@@ -1,0 +1,62 @@
+/*
+PU6/PT6: user defined function
+LV
+Uzrakstiet kodu ar četrām dažādām lietotāju funkcijām -
+bez argumentiem un bez return,
+ar argumentiem un bez return,
+bez argumentiem un ar return,
+ar argumentiem un ar return.
+
+Risinājuma kodu augšupielādējiet GitHub vietnē Jūsu RTR105 repozitorijā, šeit iekopējiet risinājuma koda adresi.
+*/
+
+#include <stdio.h>
+
+// 1. Funkcija sasveicinies() bez argumentiem, bez return - izdruka uz ekrana "Sveiks!"
+void sasveicinies()
+{
+    printf("Sveiks!\n");
+}
+
+// 2. Funkcija kvadrata(int) ar argumentiem, bez return - izdruka padota skaitla kvadratu
+void kvadrata(int x)
+{
+    printf("Skaitlis %d kvadrata ir %d\n", x, x*x);
+}
+
+// 3. Funkcija dod_pieci() bez argumentiem, ar return - vienmer atgriez 5
+int dod_pieci()
+{
+    return 5;
+}
+
+// 4. Funkcija ar reizini() argumentiem un ar return - atgriez padoto skaitlu reizinajumu
+int reizini(int x, int y)
+{
+    return x*y;
+}
+
+int main()
+{
+    //1
+    sasveicinies();
+    
+    //2
+    int skaitlis;
+    printf("Ievadi skaitli: ");
+    scanf(" %d", &skaitlis);
+    kvadrata(skaitlis);
+
+    //3
+    skaitlis = skaitlis + dod_pieci();
+    printf("Skaitlis pec funkcijas dod_pieci() return pieskaitisanas ir %d\n", skaitlis);
+
+    //4    
+    int otrs_skaitlis, reizinajums;
+    printf("Ievadi otru skaitli: ");
+    scanf(" %d", &otrs_skaitlis);
+    reizinajums = reizini(skaitlis, otrs_skaitlis);
+    printf("Abu skaitlu reizinajums (pirmais skaitlis ir palielinats par 5) ir %d\n", reizinajums);
+
+    return 0;
+}
