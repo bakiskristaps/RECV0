@@ -1,0 +1,97 @@
+/*
+Uzrakstiet kodu dialogam ar lietotāju. Lietotājam ir jāievada trīs burti (izmantojiet char datu tipu). Lietotājam ir jāizvēlas burtu kārtošanas secība - alfabēta vai prētēji. Izmantojot nosacījuma operatoru, sakārtojiet burtus atbilstoši lietotāja izvēlei un attēlojiet sakārtotu…
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main()
+{
+    char a, b, c;
+
+    printf("Ievadiet pirmo burtu: ");
+    scanf("%c", &a);
+    
+    printf("Ievadiet otro burtu: ");
+    scanf(" %c", &b); // Atstarpe vajadziga lai ENTER netiktu nolasits ka simbols
+    
+    printf("Ievadiet treso burtu: ");
+    scanf(" %c", &c);
+
+    a = tolower(a);
+    b = tolower(b); // Burti var but ievaditi lielie un mazie, kas ASCII tabula atskiras ar vertibam, tapec normalize burtus uz mazajiem 
+    c = tolower(c); 
+
+    int kartosana; // Noteikts secibu - alfabetiski vai preteji
+    char min, mid, max; // Glabas mazako, videjo un lielako burtu
+        
+    if(a <= b && a <= c) // Ja ievaditais a ir vienads vai mazaks par parejiem
+    {
+        min = a; // Tas ir mazakais
+        if(b <= c) // Salidzina atlikusos
+        {
+            mid = b; 
+            max = c;
+        }
+        else
+        {
+            mid = c;
+            max = b;
+        }
+    }
+    if(b <= a && b <= c)  // Ja ievaditais b ir vienads vai mazaks par parejiem
+    {
+        min = b; // Tas ir mazakais 
+        if(a <= c) // Salidzina atlikusos
+        {
+            mid = a; 
+            max = c;
+        }
+        else
+        {
+            mid = c;
+            max = a;
+        }
+    }
+    if(c <= a && c <= b) // Ja ievaditais c ir vienads vai mazāks par parejiem
+    {
+        min = c; // Tas ir mazakais
+        if(b <= a) // Salidzina parejos
+        {
+            mid = b; 
+            max = a;
+        }
+        else
+        {
+            mid = a;
+            max = b;
+        }        
+    }     
+
+    printf("Izvelieties kartosanas secibu:\nalfabetiski - 0\npreteji - 1\n");
+    
+    scanf("%d", &kartosana); // Nolasa lietotaja ievadito izveli
+
+    if(kartosana==0)
+    {
+        printf("Jus izvelejaties sakartot alfabetiska seciba!\n");
+        printf("Originala seciba: %c%c%c\n", a, b, c);
+        printf("Sakartots: %c%c%c\n", min, mid, max);
+
+    }
+    else
+    {
+       if (kartosana==1)
+       {
+            printf("Jus izvelejaties sakartot preteji alfabetiskai secibai!\n");
+            printf("Originala seciba: %c%c%c\n", a, b, c);
+            printf("Sakartots: %c%c%c\n", max, mid, min);
+       }
+       else 
+       {
+            printf("Jus neievadijat ne 0, ne 1!\n");
+       }
+    }
+
+    return 0;
+}
